@@ -7,13 +7,14 @@ public class Player : MonoBehaviour
     public Platform_Script _platformScript;
 
     public Transform _spawnLoc;
-    public GameObject _Spawner;
-
+    
+    public List<GameObject> _Spawners;
     public bool movedBack = false;
     public bool isGrounded = true;
     public int _maxJump = 2;
     public int _Jump = 0;
     private Rigidbody2D _rb;
+    public float timeLeft = 3.0f;
 	void Start ()
     {
         _rb = gameObject.GetComponent<Rigidbody2D>();	
@@ -21,6 +22,13 @@ public class Player : MonoBehaviour
 
 	void Update ()
     {
+        timeLeft -= Time.deltaTime;
+        if(timeLeft <= 0)
+        {
+            int index = Random.Range(0, 2);
+            Instantiate(_Spawners[index], new Vector3(0.0f, 0.0f, -1.0f), Quaternion.identity);
+            timeLeft = 8.5f;
+        }
         float heightspd = 50.0f;
 		if(Input.GetKeyDown(KeyCode.Space) && _Jump < _maxJump)
         {
@@ -43,14 +51,13 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Platform")
+        if (col.gameObject.tag == "Platform" || col.gameObject.tag == "G-Plat")
         {
-            isGrounded = true;
             _Jump = 0;
         }
     }
 
-    void OnCollisionExit2D(Collision2D col)
+    /*void OnCollisionExit2D(Collision2D col)
     {
         float _axis = Random.Range(-3.0f, 3.0f);
         if(col.gameObject.tag == "Platform")
@@ -61,5 +68,5 @@ public class Player : MonoBehaviour
                 Instantiate(_Spawner, new Vector3(14.0f, _axis, 0.0f), Quaternion.identity);
             }
         }
-    }
+    }*/
 }

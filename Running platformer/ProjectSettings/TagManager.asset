@@ -9,6 +9,7 @@ TagManager:
   - Menu
   - Platform
   - Drone
+  - G-Plat
   layers:
   - Default
   - TransparentFX

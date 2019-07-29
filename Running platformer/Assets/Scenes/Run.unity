@@ -201,7 +201,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 289217188}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3920002, y: 0.73270893, z: -0.055664062}
+  m_LocalPosition: {x: 2.07, y: 0.73270893, z: -0.055664062}
   m_LocalScale: {x: 0.3789, y: 0.3789, z: 0.3789}
   m_Children: []
   m_Father: {fileID: 363117394}
@@ -696,7 +696,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1275980711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.81, y: -0.83982486, z: 0.16796875}
+  m_LocalPosition: {x: -28.6, y: -0.83982486, z: 0.16796875}
   m_LocalScale: {x: 3.2394, y: 94.34752, z: 3.2394}
   m_Children: []
   m_Father: {fileID: 0}
@@ -874,7 +874,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1779215349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.76, y: -1.07, z: 0.18164062}
+  m_LocalPosition: {x: 0.76, y: -1.07, z: 1}
   m_LocalScale: {x: 20.351627, y: 12.515115, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -956,7 +956,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1015,7 +1015,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2001316620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.8, y: -2.21, z: -1}
+  m_LocalPosition: {x: -5.35, y: -2.21, z: -1}
   m_LocalScale: {x: 0.392, y: 0.392, z: 0.392}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1076,9 +1076,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _platformScript: {fileID: 1109093734}
-  _spawnLoc: {fileID: 1270914952}
-  _Spawner: {fileID: 1500032743109356, guid: 612fcb3bf22cd9d459bef2c18862d2f6, type: 2}
+  _spawnLoc: {fileID: 2001316623}
+  _Spawners:
+  - {fileID: 1847200414577788, guid: eddf4eb908fd38d4fa50d1576341f06a, type: 2}
+  - {fileID: 1403030419085810, guid: dc04ebc50af21954bb5bd635fbc41a36, type: 2}
   movedBack: 1
   isGrounded: 0
   _maxJump: 2
   _Jump: 0
+  timeLeft: 0
