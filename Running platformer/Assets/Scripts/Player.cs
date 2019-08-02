@@ -14,27 +14,29 @@ public class Player : MonoBehaviour
         _rb = gameObject.GetComponent<Rigidbody2D>();	
 	}
 
-	void Update ()
+    void Update()
     {
-
-        float heightspd = 50.0f;
-		if(Input.GetKeyDown(KeyCode.Space) && _Jump < _maxJump)
+        if (Input.GetKeyDown(KeyCode.Space) && _Jump < _maxJump)
         {
-            if(_Jump == 0)
+            float heightspd = 2.0f;
+            if (_Jump == 0)
             {
-                _rb.AddForce(new Vector2(0, 8.0f * heightspd));
+                _rb.velocity = new Vector2(0.0f, 5.0f * heightspd);
+                //_rb.AddForce(new Vector2(0, 8.0f * heightspd));
                 Debug.Log("Jump!");
                 _Jump++;
             }
             else
-            if(_Jump == 1)
+            if (_Jump == 1)
             {
-                _rb.AddForce(new Vector2(0, 5.0f * heightspd));
+
+                _rb.velocity = new Vector2(0.0f, 5.0f * heightspd);
+                //_rb.AddForce(new Vector2(0, 5.0f * heightspd));
                 Debug.Log("Double Jump!");
                 _Jump++;
             }
         }
-	}
+    }
 
     void OnCollisionEnter2D(Collision2D col)
     {

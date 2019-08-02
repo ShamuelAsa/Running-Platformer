@@ -74,6 +74,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4856794473108876}
+  - component: {fileID: 114885376699331970}
   m_Layer: 0
   m_Name: PlatformGroup_01
   m_TagString: Platform
@@ -243,6 +244,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touched: 1
+--- !u!114 &114885376699331970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1847200414577788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bd331c0bc6fbc43b30aa09bb28886f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despawnertimer: 15
 --- !u!114 &114950963832440054
 MonoBehaviour:
   m_ObjectHideFlags: 1

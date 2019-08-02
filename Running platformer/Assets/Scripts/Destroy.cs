@@ -6,7 +6,7 @@ public class Destroy : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "Platform")
+        if(col.gameObject.tag == "Platform" || col.gameObject.tag == "G-Plat")
         {
             Destroy(col.gameObject);
         }
