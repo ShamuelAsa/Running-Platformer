@@ -10,5 +10,10 @@ public class Destroy : MonoBehaviour
         {
             Destroy(col.gameObject);
         }
+
+        if(col.gameObject.tag == "Player")
+        {
+            Application.LoadLevel(0);
+        }
     }
 }
