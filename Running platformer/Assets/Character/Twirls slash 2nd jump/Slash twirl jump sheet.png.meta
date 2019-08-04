@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: 5a8cef1b3318867429fba308b6d2c36e
+guid: cf46c8f4c6329544cba03a70a741ec06
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Sprite sheet_0
-    21300002: Sprite sheet_1
-    21300004: Sprite sheet_2
-    21300006: Sprite sheet_3
+    21300000: Slash twirl jump sheet_0
+    21300002: Slash twirl jump sheet_1
+    21300004: Slash twirl jump sheet_2
+    21300006: Slash twirl jump sheet_3
+    21300008: Slash twirl jump sheet_4
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -88,7 +89,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite sheet_0
+      name: Slash twirl jump sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -102,13 +103,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 189ab5b126366e54491ff4d2c946183f
+      spriteID: a24402d729fd1014b9e089bfe5e00559
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite sheet_1
+      name: Slash twirl jump sheet_1
       rect:
         serializedVersion: 2
         x: 600
@@ -122,13 +123,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b25d16f5bb238f142acb6f10e6e6e49d
+      spriteID: d758c05e99689eb4e904da09e9d45f56
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite sheet_2
+      name: Slash twirl jump sheet_2
       rect:
         serializedVersion: 2
         x: 1200
@@ -142,13 +143,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb4ae31fde7eaae46964866e70995ba0
+      spriteID: b027416c6f35cd5408f57fbcbdd320b9
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite sheet_3
+      name: Slash twirl jump sheet_3
       rect:
         serializedVersion: 2
         x: 1800
@@ -162,7 +163,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff18f469b34fe594082a395120800d75
+      spriteID: 689b7864458c9f74da082df69c9d225b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash twirl jump sheet_4
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 0
+        width: 600
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d9bb4601c839348b89e19e72876405
       vertices: []
       indices: 
       edges: []
@@ -170,7 +191,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 375e3e841c3edb245a8fedad12ab8fc5
+    spriteID: d4915ca5dd68e3d41a3076cb9f06fb70
     vertices: []
     indices: 
     edges: []
