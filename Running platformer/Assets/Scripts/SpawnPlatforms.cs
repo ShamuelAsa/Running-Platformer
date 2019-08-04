@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpawnPlatforms : MonoBehaviour
 {
-    public Transform _spawnLoc;
-
     public List<GameObject> _Spawners;
 
     public float timeLeft = 5.5f;
