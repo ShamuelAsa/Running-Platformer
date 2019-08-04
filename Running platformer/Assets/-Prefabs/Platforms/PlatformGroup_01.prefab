@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212160516807986600}
   - component: {fileID: 61778290402276290}
   - component: {fileID: 50072183724879126}
-  - component: {fileID: 114358492881963004}
   m_Layer: 0
   m_Name: 1 (4)
   m_TagString: G-Plat
@@ -40,7 +39,6 @@ GameObject:
   - component: {fileID: 4101073893001140}
   - component: {fileID: 212355326614750530}
   - component: {fileID: 68502326186656940}
-  - component: {fileID: 114950963832440054}
   m_Layer: 0
   m_Name: 3
   m_TagString: G-Plat
@@ -58,7 +56,6 @@ GameObject:
   - component: {fileID: 4072416359569014}
   - component: {fileID: 212467656866617402}
   - component: {fileID: 68347616453316728}
-  - component: {fileID: 114001618521199084}
   m_Layer: 0
   m_Name: 2
   m_TagString: G-Plat
@@ -220,30 +217,6 @@ EdgeCollider2D:
   - {x: -0.9695786, y: 1.4550552}
   - {x: 1.0611533, y: 0.8399935}
   - {x: 1.9551976, y: 0.12868118}
---- !u!114 &114001618521199084
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1573536373947234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bbc1393bd7220f4bb7ba647d180bc83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  touched: 0
---- !u!114 &114358492881963004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1265875007173950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bbc1393bd7220f4bb7ba647d180bc83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  touched: 1
 --- !u!114 &114885376699331970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -256,18 +229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   despawnertimer: 15
---- !u!114 &114950963832440054
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1477855322345802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bbc1393bd7220f4bb7ba647d180bc83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  touched: 0
 --- !u!212 &212160516807986600
 SpriteRenderer:
   m_ObjectHideFlags: 1

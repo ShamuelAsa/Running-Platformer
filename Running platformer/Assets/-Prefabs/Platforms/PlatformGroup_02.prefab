@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212422723560779122}
   - component: {fileID: 61752093945055020}
   - component: {fileID: 50868938416868042}
-  - component: {fileID: 114183907847786944}
   m_Layer: 0
   m_Name: 1 (4)
   m_TagString: G-Plat
@@ -40,7 +39,6 @@ GameObject:
   - component: {fileID: 4111895826509512}
   - component: {fileID: 212582088498337940}
   - component: {fileID: 68300674447126694}
-  - component: {fileID: 114221663640807722}
   m_Layer: 0
   m_Name: 2
   m_TagString: G-Plat
@@ -75,7 +73,6 @@ GameObject:
   - component: {fileID: 212019867066152042}
   - component: {fileID: 61261209952425838}
   - component: {fileID: 50646447419889996}
-  - component: {fileID: 114278165881059358}
   m_Layer: 0
   m_Name: 1 (5)
   m_TagString: G-Plat
@@ -247,42 +244,6 @@ EdgeCollider2D:
   - {x: -0.7538042, y: -0.082938194}
   - {x: 1.2680302, y: 1.1096616}
   - {x: 2.2190356, y: 1.0689731}
---- !u!114 &114183907847786944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1151468697381048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bbc1393bd7220f4bb7ba647d180bc83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  touched: 1
---- !u!114 &114221663640807722
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1335572964668268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bbc1393bd7220f4bb7ba647d180bc83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  touched: 0
---- !u!114 &114278165881059358
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1769313396655418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bbc1393bd7220f4bb7ba647d180bc83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  touched: 1
 --- !u!114 &114629174846853352
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Auto_Move : MonoBehaviour
 {
-    public float speed = 3.0f;
+    public float speed;
     public float platSpd = 2.0f;
 
     void Update ()
@@ -19,6 +19,7 @@ public class Auto_Move : MonoBehaviour
 
         for (int i = 0; i < _drones.Length; i++)
         {
+            speed = Random.Range(1.0f, 5.0f);
             _drones[i].transform.position += Vector3.left * Time.deltaTime * speed;
         }
 	}
