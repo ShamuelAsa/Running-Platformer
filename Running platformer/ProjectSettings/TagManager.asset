@@ -11,6 +11,8 @@ TagManager:
   - Drone
   - G-Plat
   - Death
+  - onHit
+  - Attack
   layers:
   - Default
   - TransparentFX
