@@ -10,6 +10,7 @@ TagManager:
   - Platform
   - Drone
   - G-Plat
+  - Death
   layers:
   - Default
   - TransparentFX
