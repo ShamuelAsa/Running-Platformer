@@ -18,7 +18,15 @@ public class LaserShot : MonoBehaviour
         _laser.position += Vector3.left * Time.deltaTime * _spd;
         if(_despawner == 0)
         {
-            Destroy(this);
+            Destroy(gameObject);
+        }
+    }
+
+    void OnTriggerEnter2D (Collider2D col)
+    {
+        if(col.gameObject.tag == "Attack")
+        {
+            Destroy(gameObject);
         }
     }
 }

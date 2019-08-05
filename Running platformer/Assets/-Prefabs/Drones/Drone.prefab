@@ -53,7 +53,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -102,6 +102,8 @@ MonoBehaviour:
   _laser:
   - {fileID: 1680675408380376, guid: b955caa0427914c45ac3a3384d93ab71, type: 2}
   randomLaunch: 3
+  _bolt: {fileID: 1203003152381936, guid: 7ba8d2b630418204fbccc86dee71db5a, type: 2}
+  bolts_S: {fileID: 0}
 --- !u!114 &114323103951760412
 MonoBehaviour:
   m_ObjectHideFlags: 1

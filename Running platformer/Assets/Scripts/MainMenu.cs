@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
-    private Button _play, _settings;
+    private Button _play, _settings, _exit;
     public Button _back;
 
     private GameObject _menu;
@@ -18,7 +18,9 @@ public class MainMenu : MonoBehaviour
         
         _play = GameObject.Find("Play").GetComponent<Button>();
 
+        _exit = GameObject.Find("Exit").GetComponent<Button>();
 
+        _exit.onClick.AddListener(exitGame);
         _back.onClick.AddListener(Back);
         _play.onClick.AddListener(Play);
         _settings.onClick.AddListener(Settings);
@@ -39,5 +41,10 @@ public class MainMenu : MonoBehaviour
     {
         _menu.SetActive(true);
         _gameSetting.SetActive(false);
+    }
+
+    void exitGame()
+    {
+        Application.Quit();
     }
 }

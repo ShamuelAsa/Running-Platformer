@@ -48,17 +48,12 @@ public class ScrollingBackground : MonoBehaviour
             SpriteRenderer firstChild = backgroundPart.FirstOrDefault();
             if(firstChild != null)
             {
-                if (firstChild.transform.position.x < loopback.transform.position.x/*Camera.main.transform.position.x*/)
+                if (firstChild.transform.position.x < loopback.transform.position.x)
                 {
-                    //if(firstChild.IsVisibleFrom(Camera.main) == false)
-                    //{
-                        SpriteRenderer lastChild = backgroundPart.LastOrDefault();
-
-                        firstChild.transform.position = new Vector3(150, firstChild.transform.position.y, firstChild.transform.position.z);
+                        firstChild.transform.position = new Vector3(50, firstChild.transform.position.y, firstChild.transform.position.z);
 
                         backgroundPart.Remove(firstChild);
                         backgroundPart.Add(firstChild);
-                    //}
                 }
             }
         }
