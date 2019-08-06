@@ -13,6 +13,7 @@ TagManager:
   - Death
   - onHit
   - Attack
+  - Projectile
   layers:
   - Default
   - TransparentFX

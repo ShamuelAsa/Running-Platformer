@@ -9,10 +9,14 @@ public class Player : MonoBehaviour
     public int _maxJump = 2;
     public int _Jump = 0;
     public int _health = 3;
+    public float walkSpdF = 3.5f;
+    public float walkSpdB = 5.0f;
     private Rigidbody2D _rb;
     bool isInvincible = false;
     private Renderer _rend;
     public GameObject _atk;
+    public GameObject _projectileAtk;
+    public bool _gameOver = false;
 	void Start ()
     {
         _rend = gameObject.GetComponent<Renderer>();
@@ -24,6 +28,7 @@ public class Player : MonoBehaviour
     {
         if(_health <= 0)
         {
+            _gameOver = true;
             Application.LoadLevel(0);
         }
 
@@ -32,7 +37,22 @@ public class Player : MonoBehaviour
             StartCoroutine(attack());
         }
 
-        if(Input.GetKey(KeyCode.X))
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            Instantiate(_projectileAtk, gameObject.transform.position, gameObject.transform.rotation);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow) && gameObject.transform.position.x >= -5.0f)
+        {
+            gameObject.transform.position += Vector3.left * Time.deltaTime * walkSpdB;
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow) && gameObject.transform.position.x <= 5.0f)
+        {
+            gameObject.transform.position += Vector3.right * Time.deltaTime * walkSpdF;
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             float fallspd = 3.0f;
             _rb.velocity = new Vector2(0.0f, -4.0f * fallspd);
@@ -46,7 +66,7 @@ public class Player : MonoBehaviour
         {
             _Anim.SetBool("Jumping", true);
         }
-        if (Input.GetKeyDown(KeyCode.Space) && _Jump < _maxJump)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && _Jump < _maxJump)
         {
             float heightspd = 2.0f;
             if (_Jump == 0)
@@ -87,9 +107,10 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "Death")
         {
-            Debug.Log("Works");
+            _gameOver = true;
             Application.LoadLevel(0);
         }
+
         if (collision.gameObject.tag == "onHit" && isInvincible == false)
         {
             StartCoroutine(onHitBlink());
@@ -110,18 +131,18 @@ public class Player : MonoBehaviour
 
     IEnumerator D_Attack()
     {
-        _atk.GetComponent<BoxCollider2D>().isTrigger = false;
-        _Anim.SetTrigger("D_Jump");
-        yield return new WaitForSeconds(1.0f);
         _atk.GetComponent<BoxCollider2D>().isTrigger = true;
+        _Anim.SetTrigger("D_Jump");
+        yield return new WaitForSeconds(0.5f);
+        _atk.GetComponent<BoxCollider2D>().isTrigger = false;
     }
 
     IEnumerator attack()
     {
-        _atk.GetComponent<BoxCollider2D>().isTrigger = false;
+        _atk.GetComponent<BoxCollider2D>().isTrigger = true;
         _Anim.SetTrigger("Attacking");    
         yield return new WaitForSeconds(0.3f);
-        _atk.GetComponent<BoxCollider2D>().isTrigger = true;
+        _atk.GetComponent<BoxCollider2D>().isTrigger = false;
     }
 
     IEnumerator onHitBlink()

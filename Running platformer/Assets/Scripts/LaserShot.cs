@@ -24,7 +24,7 @@ public class LaserShot : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D col)
     {
-        if(col.gameObject.tag == "Attack")
+        if(col.gameObject.tag == "Attack" || col.gameObject.tag == "Projectile")
         {
             Destroy(gameObject);
         }
