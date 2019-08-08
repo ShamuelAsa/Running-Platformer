@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Animator _Anim;
-    public bool isGrounded = true;
     public int _maxJump = 2;
     public int _Jump = 0;
     public int _health = 3;
@@ -17,27 +16,27 @@ public class Player : MonoBehaviour
     public GameObject _atk;
     public GameObject _projectileAtk;
     public bool _gameOver = false;
-	void Start ()
+    void Start()
     {
         _rend = gameObject.GetComponent<Renderer>();
         _rb = gameObject.GetComponent<Rigidbody2D>();
         _Anim = gameObject.GetComponent<Animator>();
-	}
+    }
 
     void Update()
     {
-        if(_health <= 0)
+        if (_health <= 0)
         {
             _gameOver = true;
             Application.LoadLevel(0);
         }
 
-        if(Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             StartCoroutine(attack());
         }
 
-        if(Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             Instantiate(_projectileAtk, gameObject.transform.position, gameObject.transform.rotation);
         }
@@ -52,56 +51,65 @@ public class Player : MonoBehaviour
             gameObject.transform.position += Vector3.right * Time.deltaTime * walkSpdF;
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             float fallspd = 3.0f;
-            _rb.velocity = new Vector2(0.0f, -4.0f * fallspd);
+            _rb.velocity = new Vector2(0.0f, -1.0f * fallspd);
         }
-        if(isGrounded == true)
-        {
-            _Anim.SetBool("Jumping", false);
-            
-        }
-        else if(_Jump == 1)
+        if (!isGrounded() && _Jump == 0)
         {
             _Anim.SetBool("Jumping", true);
+        } 
+        else if(isGrounded())
+        {
+            _Anim.SetBool("Jumping", false);
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow) && _Jump < _maxJump)
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) && _Jump <= _maxJump - 1)
         {
             float heightspd = 2.0f;
-            if (_Jump == 0)
+            _Jump++;
+            if (isGrounded() || !isGrounded())
             {
-                _rb.velocity = new Vector2(0.0f, 4.0f * heightspd);
-                isGrounded = false;
-                _Jump++;
-                if(Input.GetKeyDown(KeyCode.Z))
+                if (_Jump == 0)
                 {
-                    StartCoroutine(attack());
+                    _rb.velocity = new Vector2(0.0f, 4.0f * heightspd);
+                    Debug.Log("Jump!");
+                    if (Input.GetKeyDown(KeyCode.Z))
+                    {
+                        Debug.Log("Attack & Jump!");
+                        StartCoroutine(attack());
+                    }
+                }
+                if(_Jump >= 1 && !isGrounded())
+                {
+                    Debug.Log("Double Jump!");
+                    _rb.velocity = new Vector2(0.0f, 5.0f * heightspd);
+                    StartCoroutine(D_Attack());
+                    _Jump++;
+                    return;
                 }
             }
-            else
-            if (_Jump == 1)
-            {
-
-                _rb.velocity = new Vector2(0.0f, 5.0f * heightspd);
-                StartCoroutine(D_Attack());
-                isGrounded = false;
-                _Jump++;
-            }
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    public bool isGrounded()
     {
-        if (col.gameObject.tag == "Platform" || col.gameObject.tag == "G-Plat")
+        LayerMask mask = LayerMask.GetMask("Floor");
+        Vector2 pos = transform.position;
+        Vector2 direction = Vector2.down;
+        float distance = 1.5f;
+
+        RaycastHit2D hit = Physics2D.Raycast(pos, direction, distance, mask);
+        if (hit.collider != null)
         {
             _Jump = 0;
-            isGrounded = true;
+            return true;
         }
+        return false;
 
 
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -119,7 +127,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnColliderEnter2D (Collision2D col)
+    private void OnColliderEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Drone" && isInvincible == false)
         {
@@ -131,18 +139,18 @@ public class Player : MonoBehaviour
 
     IEnumerator D_Attack()
     {
-        _atk.GetComponent<BoxCollider2D>().isTrigger = true;
+        _atk.SetActive(true);
         _Anim.SetTrigger("D_Jump");
-        yield return new WaitForSeconds(0.5f);
-        _atk.GetComponent<BoxCollider2D>().isTrigger = false;
+        yield return new WaitForSeconds(0.3f);
+        _atk.SetActive(false);
     }
 
     IEnumerator attack()
     {
-        _atk.GetComponent<BoxCollider2D>().isTrigger = true;
-        _Anim.SetTrigger("Attacking");    
+        _atk.SetActive(true);
+        _Anim.SetTrigger("Attacking");
         yield return new WaitForSeconds(0.3f);
-        _atk.GetComponent<BoxCollider2D>().isTrigger = false;
+        _atk.SetActive(false);
     }
 
     IEnumerator onHitBlink()

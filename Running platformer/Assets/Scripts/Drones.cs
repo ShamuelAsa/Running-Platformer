@@ -7,9 +7,11 @@ public class Drones : MonoBehaviour
     private Animator _Anim;
     public int _hpDrone = 1;
     public List<GameObject> _laser;
-    public float randomLaunch = 3.0f;
+    private float randomLaunch = 3.0f;
     public GameObject _bolt;
     public BoltsManager bolts_S;
+    bool isDead = false;
+
     void Start()
     {
         _Anim = GetComponent<Animator>();
@@ -21,10 +23,12 @@ public class Drones : MonoBehaviour
         randomLaunch -= Time.deltaTime;
         if (_hpDrone <= 0)
         {
+            isDead = true;
+            _Anim.SetTrigger("isDead");
             StartCoroutine(Dead());
         }
 
-        if (randomLaunch <= 0)
+        if (randomLaunch <= 0 && isDead == false)
         {
             StartCoroutine(ShootLaser());
             randomLaunch = Random.Range(3.0f, 5.0f);
@@ -33,30 +37,22 @@ public class Drones : MonoBehaviour
 
     IEnumerator Dead()
     {
-        int randBolts = Random.Range(1, 5);
-        _Anim.SetTrigger("isDead");
-        yield return new WaitForSeconds(1.0f);
+        int randBolts = Random.Range(1, 5);        
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
         bolts_S._currencyBolts += randBolts;
         for(int i = 0; i < randBolts; i++)
         {
-            Instantiate(_bolt, gameObject.transform.position, gameObject.transform.rotation);
+            Instantiate(_bolt, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), gameObject.transform.rotation);
         }
     }
 
     IEnumerator ShootLaser()
     {
+        var positioning = new Vector3(gameObject.transform.position.x - 4.0f, gameObject.transform.position.y, gameObject.transform.position.z);
         _Anim.SetTrigger("Launching");
         int Index = 0;
-        yield return new WaitForSeconds(0.5f);
-        Instantiate(_laser[Index], gameObject.transform.position, gameObject.transform.rotation);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Attack" || collision.gameObject.tag == "Player")
-        {
-            _hpDrone--;
-        }
+        yield return new WaitForSeconds(1.0f);
+        Instantiate(_laser[Index], positioning, gameObject.transform.rotation);
     }
 }

@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 212160516807986600}
   - component: {fileID: 61778290402276290}
   - component: {fileID: 50072183724879126}
-  m_Layer: 0
+  - component: {fileID: 114241290356599888}
+  m_Layer: 8
   m_Name: 1 (4)
   m_TagString: G-Plat
   m_Icon: {fileID: 0}
@@ -39,7 +40,8 @@ GameObject:
   - component: {fileID: 4101073893001140}
   - component: {fileID: 212355326614750530}
   - component: {fileID: 68502326186656940}
-  m_Layer: 0
+  - component: {fileID: 114823890852410992}
+  m_Layer: 8
   m_Name: 3
   m_TagString: G-Plat
   m_Icon: {fileID: 0}
@@ -56,7 +58,8 @@ GameObject:
   - component: {fileID: 4072416359569014}
   - component: {fileID: 212467656866617402}
   - component: {fileID: 68347616453316728}
-  m_Layer: 0
+  - component: {fileID: 114270231585482358}
+  m_Layer: 8
   m_Name: 2
   m_TagString: G-Plat
   m_Icon: {fileID: 0}
@@ -72,7 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4856794473108876}
   - component: {fileID: 114885376699331970}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlatformGroup_01
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -217,6 +220,42 @@ EdgeCollider2D:
   - {x: -0.9695786, y: 1.4550552}
   - {x: 1.0611533, y: 0.8399935}
   - {x: 1.9551976, y: 0.12868118}
+--- !u!114 &114241290356599888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1265875007173950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb2068467693ec469be7e713ba0bd99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerS: {fileID: 0}
+--- !u!114 &114270231585482358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1573536373947234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb2068467693ec469be7e713ba0bd99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerS: {fileID: 0}
+--- !u!114 &114823890852410992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1477855322345802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb2068467693ec469be7e713ba0bd99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerS: {fileID: 0}
 --- !u!114 &114885376699331970
 MonoBehaviour:
   m_ObjectHideFlags: 1

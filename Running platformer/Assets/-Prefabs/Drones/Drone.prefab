@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1037038298840220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.081583, y: -1.012844, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 0.299, y: 0.299, z: 0.299}
   m_Children: []
   m_Father: {fileID: 0}
@@ -122,7 +122,6 @@ MonoBehaviour:
   _hpDrone: 1
   _laser:
   - {fileID: 1680675408380376, guid: b955caa0427914c45ac3a3384d93ab71, type: 2}
-  randomLaunch: 3
   _bolt: {fileID: 1203003152381936, guid: 7ba8d2b630418204fbccc86dee71db5a, type: 2}
   bolts_S: {fileID: 0}
 --- !u!114 &114323103951760412
