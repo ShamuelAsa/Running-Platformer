@@ -9,13 +9,13 @@ public class Drones : MonoBehaviour
     public List<GameObject> _laser;
     private float randomLaunch = 3.0f;
     public GameObject _bolt;
-    public BoltsManager bolts_S;
+    public UIManager bolts_S;
     bool isDead = false;
 
     void Start()
     {
         _Anim = GetComponent<Animator>();
-        bolts_S = GameObject.Find("Bolts").GetComponent<BoltsManager>();
+        bolts_S = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     void Update()

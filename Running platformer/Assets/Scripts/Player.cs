@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         if (_health <= 0)
         {
             _gameOver = true;
-            Application.LoadLevel(0);
+            Application.LoadLevel(1);
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -58,10 +58,12 @@ public class Player : MonoBehaviour
         }
         if (!isGrounded() && _Jump == 0)
         {
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
             _Anim.SetBool("Jumping", true);
         } 
         else if(isGrounded())
         {
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             _Anim.SetBool("Jumping", false);
         }
 
@@ -116,7 +118,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Death")
         {
             _gameOver = true;
-            Application.LoadLevel(0);
+            Application.LoadLevel(1);
         }
 
         if (collision.gameObject.tag == "onHit" && isInvincible == false)
@@ -141,7 +143,7 @@ public class Player : MonoBehaviour
     {
         _atk.SetActive(true);
         _Anim.SetTrigger("D_Jump");
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.3f); 
         _atk.SetActive(false);
     }
 
