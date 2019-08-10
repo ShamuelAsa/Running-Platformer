@@ -26,14 +26,17 @@ public class UIManager : MonoBehaviour
     public GameObject _pausePanel;
     public AudioSource _gameMusic;
 
-
+    //Circle Energy - Projectile shots
+    private Image _circleEnergy;
     void Awake()
     {
         _currencyBolts = PlayerPrefs.GetInt("_Bolts");
+        _gameMusic.volume = PlayerPrefs.GetFloat("_Music");
     }
 
     void Start ()
     {
+        _circleEnergy = GameObject.Find("CircleEnergy").GetComponent<Image>();
         bolts_T = GameObject.Find("Bolts").GetComponent<Text>();
         _counter = GameObject.Find("Text_M").GetComponent<TextMeshProUGUI>();
         _progressBar = GameObject.Find("ProgressSlider_M").GetComponent<Slider>();
@@ -46,6 +49,8 @@ public class UIManager : MonoBehaviour
         _lives.text = "Lives: " + _playerS._health;
 
         bolts_T.text = _currencyBolts + " Bolts";
+
+        _circleEnergy.fillAmount = (_playerS.Energy) / 100;
         if (Input.GetKeyDown(KeyCode.Escape) && _isPaused == false)
         {
             _isPaused = true;

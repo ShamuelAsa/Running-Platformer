@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public int _maxJump = 2;
     public int _Jump = 0;
     public int _health = 3;
+    public float Energy = 100.0f;
     public float walkSpdF = 3.5f;
     public float walkSpdB = 5.0f;
     private Rigidbody2D _rb;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     public GameObject _atk;
     public GameObject _projectileAtk;
     public bool _gameOver = false;
+    
     void Start()
     {
         _rend = gameObject.GetComponent<Renderer>();
@@ -36,9 +38,14 @@ public class Player : MonoBehaviour
             StartCoroutine(attack());
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && Energy >= 25 && Energy <= 100)
         {
+            Energy -= 25.0f;
             Instantiate(_projectileAtk, gameObject.transform.position, gameObject.transform.rotation);
+        }
+        else if (Energy <= 99.0f)
+        {
+            Energy += 10f * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.LeftArrow) && gameObject.transform.position.x >= -5.0f)
