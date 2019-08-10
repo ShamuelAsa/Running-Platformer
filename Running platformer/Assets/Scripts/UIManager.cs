@@ -24,10 +24,17 @@ public class UIManager : MonoBehaviour
     //Pause Menu
     public bool _isPaused = false;
     public GameObject _pausePanel;
+    public GameObject _HowToPlayPanel;
     public AudioSource _gameMusic;
-
+    
     //Circle Energy - Projectile shots
     private Image _circleEnergy;
+
+    //How to Play Panel
+    private Button _continue;
+    private int Checked = 0;
+    //Buttons
+    public Button ResumeB, RestartB, ExitB, HowB;
     void Awake()
     {
         _currencyBolts = PlayerPrefs.GetInt("_Bolts");
@@ -36,16 +43,34 @@ public class UIManager : MonoBehaviour
 
     void Start ()
     {
+        _continue = GameObject.Find("Continue_B").GetComponent<Button>();
         _circleEnergy = GameObject.Find("CircleEnergy").GetComponent<Image>();
         bolts_T = GameObject.Find("Bolts").GetComponent<Text>();
         _counter = GameObject.Find("Text_M").GetComponent<TextMeshProUGUI>();
         _progressBar = GameObject.Find("ProgressSlider_M").GetComponent<Slider>();
         _lives = GameObject.Find("Lives").GetComponent<Text>();
         _playerS = GameObject.Find("Player").GetComponent<Player>();
-	}
+
+        _continue.onClick.AddListener(Continued);
+        ResumeB.onClick.AddListener(Resume);
+        RestartB.onClick.AddListener(Restart);
+        ExitB.onClick.AddListener(Exit);
+        HowB.onClick.AddListener(How);
+
+        if (!PlayerPrefs.HasKey("Check"))
+        {
+            Time.timeScale = 0;
+            _HowToPlayPanel.SetActive(true);
+        }
+        else if (PlayerPrefs.HasKey("Check"))
+        {
+            _HowToPlayPanel.SetActive(false);
+        }
+    }
 	
 	void Update ()
     {
+
         _lives.text = "Lives: " + _playerS._health;
 
         bolts_T.text = _currencyBolts + " Bolts";
@@ -91,5 +116,35 @@ public class UIManager : MonoBehaviour
             PlayerPrefs.SetInt("_Bolts", _currencyBolts);
             _currentDistance = 0;
         }
+    }
+
+    void Continued()
+    {
+        PlayerPrefs.SetInt("Check", Checked);
+        Checked = 1;
+        _HowToPlayPanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    void Resume()
+    {
+        _isPaused = false;
+        Time.timeScale = 1;
+    }
+
+    void Restart()
+    {
+        Application.LoadLevel(1);
+        Time.timeScale = 1;
+    }
+    void Exit()
+    {
+        Application.LoadLevel(0);
+    }
+
+    void How()
+    {
+        _isPaused = false;
+        _HowToPlayPanel.SetActive(true);
     }
 }
