@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class UIManager : MonoBehaviour
 {
@@ -134,12 +135,12 @@ public class UIManager : MonoBehaviour
 
     void Restart()
     {
-        Application.LoadLevel(1);
+        SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
     void Exit()
     {
-        Application.LoadLevel(0);
+        SceneManager.LoadScene(0);
     }
 
     void How()

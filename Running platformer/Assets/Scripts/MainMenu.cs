@@ -29,6 +29,7 @@ public class MainMenu : MonoBehaviour
         if(!PlayerPrefs.HasKey("_Music"))
         {
             _music.value = 0.5f;
+            PlayerPrefs.SetFloat("_Music", _music.value);
         }
     }
 

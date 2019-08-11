@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     private Animator _Anim;
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         if (_health <= 0)
         {
             _gameOver = true;
-            Application.LoadLevel(1);
+            SceneManager.LoadScene(1);
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
                 if (_Jump == 0)
                 {
                     _rb.velocity = new Vector2(0.0f, 4.0f * heightspd);
-                    Debug.Log("Jump!");
+
                     if (Input.GetKeyDown(KeyCode.Z))
                     {
                         Debug.Log("Attack & Jump!");
@@ -92,8 +92,8 @@ public class Player : MonoBehaviour
                 }
                 if(_Jump >= 1 && !isGrounded())
                 {
-                    Debug.Log("Double Jump!");
                     _rb.velocity = new Vector2(0.0f, 5.0f * heightspd);
+
                     StartCoroutine(D_Attack());
                     _Jump++;
                     return;
@@ -125,7 +125,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Death")
         {
             _gameOver = true;
-            Application.LoadLevel(1);
+            SceneManager.LoadScene(1);
+
         }
 
         if (collision.gameObject.tag == "onHit" && isInvincible == false)
