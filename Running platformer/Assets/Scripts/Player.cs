@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("Floor");
         Vector2 pos = transform.position;
         Vector2 direction = Vector2.down;
-        float distance = 1.5f;
+        float distance = 1.0f;
 
         RaycastHit2D hit = Physics2D.Raycast(pos, direction, distance, mask);
         if (hit.collider != null)
@@ -126,7 +126,6 @@ public class Player : MonoBehaviour
         {
             _gameOver = true;
             SceneManager.LoadScene(1);
-
         }
 
         if (collision.gameObject.tag == "onHit" && isInvincible == false)
@@ -135,8 +134,13 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
             _health--;
         }
-    }
 
+        if (collision.gameObject.tag == "Pickup")
+        {
+            Destroy(collision.gameObject);
+            _health++;
+        }
+    }
     private void OnColliderEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Drone" && isInvincible == false)

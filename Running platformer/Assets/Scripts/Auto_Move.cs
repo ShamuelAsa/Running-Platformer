@@ -9,7 +9,7 @@ public class Auto_Move : MonoBehaviour
 
     void Update ()
     {
-
+        GameObject[] _health = GameObject.FindGameObjectsWithTag("Pickup");
         GameObject[] _drones = GameObject.FindGameObjectsWithTag("Drone");
         GameObject[] _platforms = GameObject.FindGameObjectsWithTag("Platform");
         for (int i = 0; i < _platforms.Length; i++)
@@ -21,6 +21,11 @@ public class Auto_Move : MonoBehaviour
         {
             speed = Random.Range(1.0f, 5.0f);
             _drones[i].transform.position += Vector3.left * Time.deltaTime * speed;
+        }
+
+        for(int i = 0; i < _health.Length; i++)
+        {
+            _health[i].transform.position += Vector3.left * Time.deltaTime * 3.0f;
         }
 	}
 }

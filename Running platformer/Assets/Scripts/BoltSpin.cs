@@ -19,6 +19,6 @@ public class BoltSpin : MonoBehaviour
             Destroy(gameObject);
             timer = 3.0f;
         }
-        _bolt.transform.Rotate(new Vector3(0, 0, 5));
+        _bolt.transform.Rotate(new Vector3(0, 0, 3));
 	}
 }

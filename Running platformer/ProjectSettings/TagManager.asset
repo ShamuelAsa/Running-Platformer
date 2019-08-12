@@ -15,6 +15,9 @@ TagManager:
   - Attack
   - Projectile
   - HeadCol
+  - GM
+  - UIManager
+  - Pickup
   layers:
   - Default
   - TransparentFX
