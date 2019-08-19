@@ -43,7 +43,8 @@ public class UIManager : MonoBehaviour
     public Button ResumeB, RestartB, ExitB, HowB;
 
     //Preparation Boss Stage
-    public bool _preparationStage = false;
+    bool _preparationStage = false;
+    BossStage _boss;
 
     void Awake()
     {
@@ -53,6 +54,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        _boss = GameObject.Find("Game Manager").GetComponent<BossStage>();
         _continue = GameObject.Find("Continue_B").GetComponent<Button>();
         _circleEnergy = GameObject.Find("CircleEnergy").GetComponent<Image>();
         bolts_T = GameObject.Find("Bolts").GetComponent<Text>();
@@ -112,6 +114,10 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1;
         }
 
+        if(_currentDistance == 10.0f)
+        {
+            _boss.Boss();
+        }
         if (_isPaused)
         {
             _pausePanel.SetActive(true);
@@ -132,6 +138,7 @@ public class UIManager : MonoBehaviour
             if (_currentDistance >= _currentMilestone)
             {
                 _currentMilestone += 100.0f;
+                _boss.Boss();
                 _progressBar.value = 0;
             }
             _counter.text = Mathf.Round(_currentMilestone) + " M";
