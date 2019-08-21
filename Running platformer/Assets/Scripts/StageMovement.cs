@@ -8,14 +8,15 @@ public class StageMovement : MonoBehaviour
 
 	void Start ()
     {
-        Stage_obj = gameObject.GetComponent<Transform>();	
+        Stage_obj = gameObject.GetComponent<Transform>();
+        StartCoroutine(movement());
 	}
 
-	void Update ()
+
+    IEnumerator movement()
     {
-		while(Stage_obj.position.x > Stage_obj.position.x - 20)
-        {
-            Stage_obj.position -= new Vector3(3 * Time.deltaTime, 0, 0);
-        }
-	}
+        Stage_obj.position -= new Vector3(1 * Time.deltaTime, 0, 0);
+        yield return new WaitForSeconds(3.0f);
+        Debug.Log("Finished moving");
+    }
 }

@@ -23,10 +23,12 @@ public class UIManager : MonoBehaviour
 
     //Pause Menu
     public bool _isPaused = false;
+    public bool _TimerWait = false;
     public GameObject _pausePanel;
     public GameObject _HowToPlayPanel;
     public AudioSource _gameMusic;
-
+    public Text _countdownText;
+    public float countdown;
     //Highscore
     public Text _hs;
     public int _hsScore;
@@ -54,6 +56,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        _countdownText.enabled = false;
         _boss = GameObject.Find("Game Manager").GetComponent<BossStage>();
         _continue = GameObject.Find("Continue_B").GetComponent<Button>();
         _circleEnergy = GameObject.Find("CircleEnergy").GetComponent<Image>();
@@ -103,20 +106,27 @@ public class UIManager : MonoBehaviour
         _circleEnergy.fillAmount = (_playerS.Energy) / 100;
         if (Input.GetKeyDown(KeyCode.Escape) && _isPaused == false && escLocked == false)
         {
+            _countdownText.enabled = false;
             _isPaused = true;
             Time.timeScale = 0;
             _gameMusic.Pause();
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && escLocked == false)
         {
+            _countdownText.enabled = true;
+            countdown = 3.0f;
+            _TimerWait = true;
             _isPaused = false;
+        }
+        _countdownText.text = Mathf.RoundToInt(countdown) + "";
+
+        countdown -= Time.unscaledDeltaTime;
+        if (countdown <= 0 && _TimerWait)
+        {
+            _TimerWait = false;
+            _countdownText.enabled = false;
             _gameMusic.UnPause();
             Time.timeScale = 1;
-        }
-
-        if(_currentDistance == 10.0f)
-        {
-            _boss.Boss();
         }
         if (_isPaused)
         {
@@ -159,17 +169,16 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt("Check", Checked);
         Checked = 1;
         escLocked = false;
-        _gameMusic.UnPause();
         _HowToPlayPanel.SetActive(false);
-        Time.timeScale = 1;
+        _isPaused = true;
     }
 
     void Resume()
     {
-        escLocked = false;
-        _gameMusic.UnPause();
+        _countdownText.enabled = true;
+        countdown = 3.0f;
+        _TimerWait = true;
         _isPaused = false;
-        Time.timeScale = 1;
     }
 
     void Restart()

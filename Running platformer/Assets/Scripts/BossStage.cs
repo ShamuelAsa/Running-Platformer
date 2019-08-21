@@ -6,10 +6,11 @@ public class BossStage : MonoBehaviour
 {
     private SpawnPlatforms _plat;
     private SpawnDrones _drone;
+    private Auto_Move _AutoMove;
     public GameObject _boss, platform;
 	void Start ()
     {
-
+        _AutoMove = gameObject.GetComponent<Auto_Move>();
         _plat = gameObject.GetComponent<SpawnPlatforms>();
         _drone = gameObject.GetComponent<SpawnDrones>();
         
@@ -19,13 +20,21 @@ public class BossStage : MonoBehaviour
     {
         Debug.Log("Boss stage");
         //Executing boss stage.
-        _plat.gameObject.GetComponent<SpawnPlatforms>().enabled = false;
-        _drone.gameObject.GetComponent<SpawnDrones>().enabled = false;
+        _plat.enabled = false;
+        _drone.enabled = false;
         //Instantiate()
+        StartCoroutine(movementDisabled());
 
         //Instantiate floors
-        Instantiate(platform, new Vector3(15.0f, 0.0f, 0.0f), Quaternion.identity);
+        Instantiate(platform, new Vector3(5.0f, 0.0f, 0.0f), Quaternion.identity);
 
         //Instantiate the boss!!!@thodfshijonmklsdhiotwhjs
+    }
+
+    IEnumerator movementDisabled()
+    {
+        Debug.Log("Preparing to stop movement!");
+        yield return new WaitForSeconds(8.5f);
+        _AutoMove.enabled = false;
     }
 }
