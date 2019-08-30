@@ -30,6 +30,7 @@ public class MainMenu : MonoBehaviour
         {
             _music.value = 0.5f;
             PlayerPrefs.SetFloat("_Music", _music.value);
+
         }
     }
 

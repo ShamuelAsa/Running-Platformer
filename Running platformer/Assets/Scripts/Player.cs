@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
         if (_health <= 0)
         {
             _gameOver = true;
-            SceneManager.LoadScene(1);
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -125,7 +124,6 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Death")
         {
             _gameOver = true;
-            SceneManager.LoadScene(1);
         }
 
         if (collision.gameObject.tag == "onHit" && isInvincible == false)

@@ -148,7 +148,7 @@ public class UIManager : MonoBehaviour
             if (_currentDistance >= _currentMilestone)
             {
                 _currentMilestone += 100.0f;
-                _boss.Boss();
+                //_boss.Boss();
                 _progressBar.value = 0;
             }
             _counter.text = Mathf.Round(_currentMilestone) + " M";
